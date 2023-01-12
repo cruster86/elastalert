@@ -38,8 +38,8 @@ image:
   # docker image
   repository: jertel/elastalert-docker
   # docker image tag
-  tag: 0.2.4
-  pullPolicy: IfNotPresent
+  tag: latest
+  pullPolicy: Always
   pullSecrets: []
 
 resources: {}
