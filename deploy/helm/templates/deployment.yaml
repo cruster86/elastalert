@@ -32,47 +32,15 @@ spec:
       - name: elastalert
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-{{- if .Values.command }}
-        command:
-{{ toYaml .Values.command | indent 10 }}
-{{- end }}
-{{- if .Values.args }}
-        args:
-{{ toYaml .Values.args | indent 10 }}
-{{- end }}
         volumeMounts:
-          - name: config
-            mountPath: '/opt/config'
-          - name: rules
-            mountPath: '/opt/rules'
-{{- if .Values.elasticsearch.certsVolumeMounts }}
-{{ toYaml .Values.elasticsearch.certsVolumeMounts | indent 10 }}
-{{- end }}
-{{- if .Values.extraVolumeMounts }}
-{{ toYaml .Values.extraVolumeMounts | indent 10 }}
-{{- end }}
+        - mountPath: /opt/config
+          name: config
+        - mountPath: /opt/rules
+          name: rules
+        - mountPath: /usr/local/lib/python3.6/site-packages/elastalert_modules
+          name: modules
         resources:
 {{ toYaml .Values.resources | indent 12 }}
-        env:
-{{- if .Values.elasticsearch.credentialsSecret }}
-{{- if .Values.elasticsearch.credentialsSecretUsernameKey }}
-          - name: ES_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.elasticsearch.credentialsSecret }}
-                key: {{ .Values.elasticsearch.credentialsSecretUsernameKey }}
-{{- end }}
-{{- if .Values.elasticsearch.credentialsSecretPasswordKey }}
-          - name: ES_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.elasticsearch.credentialsSecret }}
-                key: {{ .Values.elasticsearch.credentialsSecretPasswordKey }}
-{{- end }}
-{{- end }}
-{{- if .Values.optEnv }}
-{{ .Values.optEnv | toYaml | indent 10}}
-{{- end }}
       restartPolicy: Always
 {{- if .Values.tolerations }}
       tolerations:
@@ -93,40 +61,18 @@ spec:
 {{- end }}
 {{- end }}
       volumes:
-        - name: rules
-{{- if .Values.secretRulesName }}
-          secret:
-            secretName: {{ .Values.secretRulesName }}
-{{- if not .Values.secretRulesMountsAsDirectory }}
-            items:
-{{- range $key := .Values.secretRulesList }}
-            - key: {{ $key }}
-              path: {{ $key}}.yaml
-{{- end }}
-{{- end }}
-{{- else }}
-          configMap:
-            name: {{ template "elastalert.fullname" . }}-rules
-            items:
-{{- range $key, $value := .Values.rules }}
-            - key: {{ $key }}
-              path: {{ $key}}.yaml
-{{- end }}
-{{- end }}
-        - name: config
-{{- if .Values.secretConfigName }}
-          secret:
-            secretName: {{ .Values.secretConfigName }}
-{{- else }}
-          configMap:
-            name: {{ template "elastalert.fullname" . }}-config
-{{- end }}
-            items:
-            - key: elastalert_config
-              path: elastalert_config.yaml
-{{- if .Values.elasticsearch.certsVolumes }}
-{{ toYaml .Values.elasticsearch.certsVolumes | indent 8 }}
-{{- end }}
-{{- if .Values.extraVolumes }}
-{{ toYaml .Values.extraVolumes | indent 8 }}
-{{- end }}
+      - configMap:
+          defaultMode: 420
+          name: modules
+        name: modules
+      - configMap:
+          defaultMode: 420
+          name: rules
+        name: rules
+      - configMap:
+          defaultMode: 420
+          items:
+          - key: elastalert_config
+            path: elastalert_config.yaml
+          name: config
+        name: config
