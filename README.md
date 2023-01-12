@@ -1,54 +1,41 @@
 <details><summary>Состав проекта:</summary>
     .
-
+    
     ├── deploy
     │   └── helm
-    │       ├── prod
-    │       │   ├── Chart.yaml
-    │       │   ├── conf
-    │       │   │   ├── corp
-    │       │   │   │   └── values.yaml
-    │       │   │   ├── cpm
-    │       │   │   │   └── values.yaml
-    │       │   │   ├── sirius
-    │       │   │   │   └── values.yaml
-    │       │   │   └── univ
-    │       │   │       └── values.yaml
-    │       │   ├── templates
-    │       │   │   ├── _helpers.tpl
-    │       │   │   ├── clusterrole.yaml
-    │       │   │   ├── clusterrolebinding.yaml
-    │       │   │   ├── configmap.yaml
-    │       │   │   ├── daemonset.yaml
-    │       │   │   ├── deployment.yaml
-    │       │   │   ├── role.yaml
-    │       │   │   ├── rolebinding.yaml
-    │       │   │   ├── secrert.yaml
-    │       │   │   └── serviceaccount.yaml
-    │       │   └── values.yaml
-    │       └── stage
-    │           ├── Chart.yaml
-    │           ├── conf
-    │           │   ├── corp
-    │           │   │   └── values.yaml
-    │           │   ├── cpm-dev
-    │           │   │   └── values.yaml
-    │           │   ├── sirius
-    │           │   │   └── values.yaml
-    │           │   └── univ
-    │           │       └── values.yaml
-    │           ├── templates
-    │           │   ├── _helpers.tpl
-    │           │   ├── clusterrole.yaml
-    │           │   ├── clusterrolebinding.yaml
-    │           │   ├── configmap.yaml
-    │           │   ├── daemonset.yaml
-    │           │   ├── deployment.yaml
-    │           │   ├── role.yaml
-    │           │   ├── rolebinding.yaml
-    │           │   ├── secret.yaml
-    │           │   └── serviceaccount.yaml
-    │           └── values.yaml
+    │       ├── Chart.yaml
+    │       ├── conf
+    │       │   ├── corp
+    │       │   │   ├── config.yaml
+    │       │   │   ├── rules.yaml
+    │       │   │   └── values.yaml
+    │       │   ├── cpm
+    │       │   │   ├── config.yaml
+    │       │   │   ├── rules.yaml
+    │       │   │   └── values.yaml
+    │       │   ├── cpm-dev
+    │       │   │   ├── config.yaml
+    │       │   │   ├── rules.yaml
+    │       │   │   └── values.yaml
+    │       │   ├── sirius
+    │       │   │   ├── config.yaml
+    │       │   │   ├── rules.yaml
+    │       │   │   └── values.yaml
+    │       │   └── univ
+    │       │       ├── config.yaml
+    │       │       ├── rules.yaml
+    │       │       └── values.yaml
+    │       ├── templates
+    │       │   ├── _helpers.tpl
+    │       │   ├── config.yaml
+    │       │   ├── deployment.yaml
+    │       │   ├── modules.yaml
+    │       │   ├── podsecuritypolicy.yaml
+    │       │   ├── role.yaml
+    │       │   ├── rolebinding.yaml
+    │       │   ├── rules.yaml
+    │       │   └── serviceaccount.yaml
+    │       └── values.yaml
     └── scripts
         └── helm_deploy_and_wait.sh
 </details>
