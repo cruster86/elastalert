@@ -36,11 +36,12 @@ writebackIndex: elastalert
 
 image:
   # docker image
-  repository: jertel/elastalert-docker
+  repository: cr.yandex/crpcm9tg75s8gu2hqkp9/elastalert
   # docker image tag
   tag: latest
   pullPolicy: Always
-  pullSecrets: []
+  pullSecrets:
+  - name: sirius-registry
 
 resources: {}
 

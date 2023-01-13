@@ -1,0 +1,89 @@
+#stages:
+#  - cpm-deploy
+#  - corp-deploy
+#  - univ-deploy
+#  - sirius-deploy
+
+#.base-elastalert:
+#  when: manual
+#  before_script:
+#    - echo 'Deploy parameters:'
+#    - echo 'CLUSTER_NAME =>' ${CLUSTER_NAME}
+#  script:
+#    - set -x
+#    - kubectl get ns elastalert || kubectl create ns elastalert
+#    - chmod +x ./scripts/helm_deploy_and_wait.sh
+#    - RELEASE_NAME="elastalert"
+#      NAMESPACE="elastalert"
+#      CHART="deploy/helm"
+#      HELM_ARGS="
+#      -f deploy/helm/conf/${CLUSTER_NAME}/values.yaml
+#      -f deploy/helm/conf/${CLUSTER_NAME}/rules.yaml
+#      -f deploy/helm/conf/${CLUSTER_NAME}/config.yaml
+#      --set global.secret="${YC_REGISTRY}"
+#      --atomic
+#      --wait"
+#      ./scripts/helm_deploy_and_wait.sh
+
+#############  CPM  ############
+
+#cpm-dev elastalert deploy:
+#  extends:
+#    - .base-elastalert
+#  stage: cpm-deploy
+#  environment:
+#    name: stage
+#  variables:
+#    CLUSTER_NAME: "cpm-dev"
+#  tags:
+#    - kube-cpm
+
+#cpm-yc elastalert deploy:
+#  extends:
+#    - .base-elastalert
+#  stage: cpm-deploy
+#  environment:
+#    name: prod
+#  variables:
+#    CLUSTER_NAME: "cpm"
+#  tags:
+#    - cpm-yac
+
+#############  CORP  ############
+
+#corp-prod elastalert deploy:
+#  extends:
+#    - .base-elastalert
+#  stage: corp-deploy
+#  environment:
+#    name: prod
+#  variables:
+#    CLUSTER_NAME: "corp"
+#  tags:
+#    - kube-corp
+
+#############  UNIV  ############
+
+#univ-prod elastalert deploy:
+#  extends:
+#    - .base-elastalert
+#  stage: univ-deploy
+#  environment:
+#    name: prod
+#  variables:
+#    CLUSTER_NAME: "univ"
+#  tags:
+#    - kube-univ
+
+#############  SIRIUS  ############
+
+#sirius-prod elastalert deploy:
+#  extends:
+#    - .base-elastalert
+#  stage: sirius-deploy
+#  environment:
+#    name: prod
+#  variables:
+#    CLUSTER_NAME: "sirius"
+#  tags:
+#    - kube-ci
