@@ -41,7 +41,7 @@ image:
   tag: latest
   pullPolicy: Always
   pullSecrets:
-  - name: sirius-registry
+  - sirius-registry
 
 resources: {}
 

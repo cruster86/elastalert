@@ -53,7 +53,7 @@ spec:
 {{- with .Values.image.pullSecrets }}
       imagePullSecrets:
 {{- range . }}
-        - name: {{ . }}
+      - name: {{ . }}
 {{- end }}
 {{- end }}
       volumes:
