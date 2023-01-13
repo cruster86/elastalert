@@ -1,2 +1,6 @@
+config: "conf/cpm-dev/config.yaml"
+
+rules: "conf/cpm-dev/rules.yaml"
+
 nodeSelector:
   kubernetes.io/hostname: ts-monitoring
