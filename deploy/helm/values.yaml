@@ -64,21 +64,8 @@ optEnv: []
 extraConfigOptions: {}
 
 rules: {}
-  # deadman_slack: |-
-  #   ---
-  #   name: Deadman Switch Slack
-  #   type: frequency
-  #   index: containers-*
-  #   num_events: 3
-  #   timeframe:
-  #     minutes: 3
-  #   filter:
-  #   - term:
-  #       message: "deadmanslack"
-  #   alert:
-  #   - "slack"
-  #   slack:
-  #   slack_webhook_url: dummy
+
+config: {}
 
 serviceAccount:
   # Specifies whether a service account should be created
