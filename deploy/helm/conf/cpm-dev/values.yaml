@@ -1,1 +1,2 @@
-
+nodeSelector:
+  kubernetes.io/hostname: ts-monitoring
