@@ -1,6 +1,6 @@
 <details><summary>Состав проекта:</summary>
     .
-    
+
     ├── deploy
     │   └── helm
     │       ├── Chart.yaml
@@ -34,6 +34,7 @@
     │       │   ├── role.yaml
     │       │   ├── rolebinding.yaml
     │       │   ├── rules.yaml
+    │       │   ├── secret.yaml
     │       │   └── serviceaccount.yaml
     │       └── values.yaml
     └── scripts
