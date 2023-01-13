@@ -1,5 +1,4 @@
-apiVersion: v1
-data:
+rules:
   backend-dev.yaml: |-
     name: "Проблема с бекендом в кластере CPM (DEV)"
     type: any
@@ -148,9 +147,3 @@ data:
     rob_url: "https://rob.sirius.online/message/logs_cpm_test_alert"
     rob_token: "eyJhbGciOiJQUzUxMiJ9.eyJlbWFpbCI6ImdpdGxhYkBzaXJpdXMub25saW5lIiwicm9sZXMiOltdLCJtaWRkbGVOYW1lIjoiIiwibGFzdE5hbWUiOiIiLCJmaXJzdE5hbWUiOiIiLCJpZCI6IjAiLCJwYXJlbnRDb2RlIjpudWxsfQ.4wElX1AAbYchLsUUN8DFNJb3THG7XsURqzYpv98hvrGVZaIxQpmjrS8bIVfcgkewRlRyhBoxamxAqsbNMpBj359FgLdHiOCpst-HPM-hSClNyIEdeJYUDQXkKBL4IIkvwZ4etXwzGhubFtD44unZxgEqzcCDc3ShCts7l0OAxa3LvTue_f_JhxpUYSDQn84jnswEUKvcWGpZ5PcleptbvIM7_yG8h9RxulvXxgckDO5wWqRECcJIqfWMR57xI0aeTgZa1Fh2s7Ljtd7jgtg8nINB4X1FCm11w5MfKcKm-SJEnEcvy8VXDd3srw7iD30KYcQVa2VnVbGUKREcU9IEmg"
     kibana_url: "https://logs-cpm.online.olimpiada.ru"
-kind: ConfigMap
-metadata:
-  labels:
-    app: elastalert
-    release: elastalert
-  name: rules
