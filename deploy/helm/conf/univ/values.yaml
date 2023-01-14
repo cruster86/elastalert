@@ -1,1 +1,140 @@
+nodeSelector:
+  nodeRole: monitoring
 
+rules:
+  backend-dev.yaml: |-
+    name: "Проблема с бекендом в кластере UNIV (DEV)"
+    type: any
+    index: filebeat-*
+    filter:
+    - query:
+        query_string:
+          query: "json.severity: (ERROR OR CRITICAL) AND (kubernetes.namespace: *-dev)"
+    alert:
+    - "rob"
+    include: ["json.message", "json.data", "kubernetes.labels", "_id", "_index"]
+    alert_missing_value: ""
+    alert_subject: "**`{0}`**"
+    alert_subject_args: ["kubernetes.labels.app"]
+    alert_text: |+
+        {0}
+        ```
+        {1}
+
+        {3}
+        ```
+
+        **[Подробности здесь](https://logs-univ.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
+    alert_text_args: ["breakline", "json.message", "_id", "json.data"]
+    alert_text_type: alert_text_only
+    alert: "elastalert_modules.rob.RobAlerter"
+    rob_url: "https://rob.sirius.online/message/logs_univ_dev_alert"
+    rob_token: "eyJhbGciOiJQUzUxMiJ9.eyJlbWFpbCI6ImdpdGxhYkBzaXJpdXMub25saW5lIiwicm9sZXMiOltdLCJtaWRkbGVOYW1lIjoiIiwibGFzdE5hbWUiOiIiLCJmaXJzdE5hbWUiOiIiLCJpZCI6IjAiLCJwYXJlbnRDb2RlIjpudWxsfQ.4wElX1AAbYchLsUUN8DFNJb3THG7XsURqzYpv98hvrGVZaIxQpmjrS8bIVfcgkewRlRyhBoxamxAqsbNMpBj359FgLdHiOCpst-HPM-hSClNyIEdeJYUDQXkKBL4IIkvwZ4etXwzGhubFtD44unZxgEqzcCDc3ShCts7l0OAxa3LvTue_f_JhxpUYSDQn84jnswEUKvcWGpZ5PcleptbvIM7_yG8h9RxulvXxgckDO5wWqRECcJIqfWMR57xI0aeTgZa1Fh2s7Ljtd7jgtg8nINB4X1FCm11w5MfKcKm-SJEnEcvy8VXDd3srw7iD30KYcQVa2VnVbGUKREcU9IEmg"
+    kibana_url: "https://logs-univ.sirius.online/"
+  backend-prod.yaml: |-
+    ---
+    name: "Проблема с бекендом в кластере UNIV (PROD)"
+    type: any
+    index: filebeat-*
+    filter:
+    - query:
+        query_string:
+          query: "json.severity:(ERROR OR CRITICAL) AND (kubernetes.namespace: *-prod)"
+    alert:
+    - "rob"
+    include: ["json.message", "json.data", "kubernetes.labels", "_id", "_index"]
+    alert_missing_value: ""
+    alert_subject: "**`{0}`**"
+    alert_subject_args: ["kubernetes.labels.app"]
+    alert_text: |+
+        {0}
+        ```
+        {1}
+
+        {3}
+        ```
+
+        **[Подробности здесь](https://logs-univ.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
+    alert_text_args: ["breakline", "json.message", "_id", "json.data"]
+    alert_text_type: alert_text_only
+    alert: "elastalert_modules.rob.RobAlerter"
+    rob_url: "https://rob.sirius.online/message/logs_univ_prod_alert"
+    rob_token: "eyJhbGciOiJQUzUxMiJ9.eyJlbWFpbCI6ImdpdGxhYkBzaXJpdXMub25saW5lIiwicm9sZXMiOltdLCJtaWRkbGVOYW1lIjoiIiwibGFzdE5hbWUiOiIiLCJmaXJzdE5hbWUiOiIiLCJpZCI6IjAiLCJwYXJlbnRDb2RlIjpudWxsfQ.4wElX1AAbYchLsUUN8DFNJb3THG7XsURqzYpv98hvrGVZaIxQpmjrS8bIVfcgkewRlRyhBoxamxAqsbNMpBj359FgLdHiOCpst-HPM-hSClNyIEdeJYUDQXkKBL4IIkvwZ4etXwzGhubFtD44unZxgEqzcCDc3ShCts7l0OAxa3LvTue_f_JhxpUYSDQn84jnswEUKvcWGpZ5PcleptbvIM7_yG8h9RxulvXxgckDO5wWqRECcJIqfWMR57xI0aeTgZa1Fh2s7Ljtd7jgtg8nINB4X1FCm11w5MfKcKm-SJEnEcvy8VXDd3srw7iD30KYcQVa2VnVbGUKREcU9IEmg"
+    kibana_url: "https://logs-univ.sirius.online"
+  elastic.yaml: |-
+    name: "Проблема с ELASTIC в UNIV"
+    type: frequency
+    num_events: 3
+    timeframe:
+      minutes: 2
+    index: filebeat-*
+    filter:
+    - query:
+        query_string:
+          query: "kubernetes.namespace: logging AND message: *Exception*"
+    alert:
+    - "rob"
+    include: ["kubernetes.labels","kubernetes.container.name", "message", "_id"]
+    alert_missing_value: ""
+    alert_subject: "**`{0}`**"
+    alert_subject_args: ["kubernetes.labels.app"]
+    alert_text: |
+        {0}
+        ```
+        {1}
+        ```
+
+        **[Подробности здесь](https://logs-univ.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
+    alert_text_args: ["breakline", "message", "_id"]
+    alert_text_type: alert_text_only
+    alert: "elastalert_modules.rob.RobAlerter"
+    rob_url: "https://rob.sirius.online/message/logs_univ_prod_alert"
+    rob_token: "eyJhbGciOiJQUzUxMiJ9.eyJlbWFpbCI6ImdpdGxhYkBzaXJpdXMub25saW5lIiwicm9sZXMiOltdLCJtaWRkbGVOYW1lIjoiIiwibGFzdE5hbWUiOiIiLCJmaXJzdE5hbWUiOiIiLCJpZCI6IjAiLCJwYXJlbnRDb2RlIjpudWxsfQ.4wElX1AAbYchLsUUN8DFNJb3THG7XsURqzYpv98hvrGVZaIxQpmjrS8bIVfcgkewRlRyhBoxamxAqsbNMpBj359FgLdHiOCpst-HPM-hSClNyIEdeJYUDQXkKBL4IIkvwZ4etXwzGhubFtD44unZxgEqzcCDc3ShCts7l0OAxa3LvTue_f_JhxpUYSDQn84jnswEUKvcWGpZ5PcleptbvIM7_yG8h9RxulvXxgckDO5wWqRECcJIqfWMR57xI0aeTgZa1Fh2s7Ljtd7jgtg8nINB4X1FCm11w5MfKcKm-SJEnEcvy8VXDd3srw7iD30KYcQVa2VnVbGUKREcU9IEmg"
+    kibana_url: "https://logs-univ.sirius.online"
+  odyssey-prod.yaml: |-
+    name: "Odyssey. Проблема с коннектом к БД в CPM-TEST"
+    type: frequency
+    num_events: 3
+    timeframe:
+      minutes: 2
+    index: filebeat-*
+    filter:
+    - query:
+        query_string:
+          query: "kubernetes.container.name: odyssey AND (kubernetes.namespace: postgres-prod AND json.level: error)"
+    alert:
+    - "rob"
+    include: ["kubernetes.labels","kubernetes.container.name", "json.message", "_id"]
+    alert_missing_value: ""
+    alert_subject: "**`{0}`**"
+    alert_subject_args: ["kubernetes.labels.app"]
+    alert_text: |
+        {0}
+        ```
+        {1}
+        ```
+
+        **[Подробности здесь](https://logs-univ.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
+    alert_text_args: ["breakline", "json.message", "_id"]
+    alert_text_type: alert_text_only
+    alert: "elastalert_modules.rob.RobAlerter"
+    rob_url: "https://rob.sirius.online/message/logs_univ_prod_alert"
+    rob_token: "eyJhbGciOiJQUzUxMiJ9.eyJlbWFpbCI6ImdpdGxhYkBzaXJpdXMub25saW5lIiwicm9sZXMiOltdLCJtaWRkbGVOYW1lIjoiIiwibGFzdE5hbWUiOiIiLCJmaXJzdE5hbWUiOiIiLCJpZCI6IjAiLCJwYXJlbnRDb2RlIjpudWxsfQ.4wElX1AAbYchLsUUN8DFNJb3THG7XsURqzYpv98hvrGVZaIxQpmjrS8bIVfcgkewRlRyhBoxamxAqsbNMpBj359FgLdHiOCpst-HPM-hSClNyIEdeJYUDQXkKBL4IIkvwZ4etXwzGhubFtD44unZxgEqzcCDc3ShCts7l0OAxa3LvTue_f_JhxpUYSDQn84jnswEUKvcWGpZ5PcleptbvIM7_yG8h9RxulvXxgckDO5wWqRECcJIqfWMR57xI0aeTgZa1Fh2s7Ljtd7jgtg8nINB4X1FCm11w5MfKcKm-SJEnEcvy8VXDd3srw7iD30KYcQVa2VnVbGUKREcU9IEmg"
+    kibana_url: "https://logs-univ.sirius.online"
+
+config:
+  elastalert_config: |-
+    ---
+    rules_folder: /opt/rules
+    scan_subdirectories: false
+    run_every:
+      minutes: 1
+    buffer_time:
+      minutes: 15
+    es_host: elasticsearch-master
+    es_port: 9200
+    writeback_index: elastalert_status
+    use_ssl: False
+    verify_certs: True
+    alert_time_limit:
+      minutes: 60
