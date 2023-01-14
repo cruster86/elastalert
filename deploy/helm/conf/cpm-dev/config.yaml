@@ -1,0 +1,16 @@
+config:
+  elastalert_config: |-
+    ---
+    rules_folder: /opt/rules
+    scan_subdirectories: false
+    run_every:
+      minutes: 1
+    buffer_time:
+      minutes: 15
+    es_host: 10.43.214.248
+    es_port: 9200
+    writeback_index: elastalert_status
+    use_ssl: False
+    verify_certs: True
+    alert_time_limit:
+      minutes: 60
