@@ -6,24 +6,14 @@
     │       ├── Chart.yaml
     │       ├── conf
     │       │   ├── corp
-    │       │   │   ├── config.yaml
-    │       │   │   ├── rules.yaml
     │       │   │   └── values.yaml
     │       │   ├── cpm
-    │       │   │   ├── config.yaml
-    │       │   │   ├── rules.yaml
     │       │   │   └── values.yaml
     │       │   ├── cpm-dev
-    │       │   │   ├── config.yaml
-    │       │   │   ├── rules.yaml
     │       │   │   └── values.yaml
     │       │   ├── sirius
-    │       │   │   ├── config.yaml
-    │       │   │   ├── rules.yaml
     │       │   │   └── values.yaml
     │       │   └── univ
-    │       │       ├── config.yaml
-    │       │       ├── rules.yaml
     │       │       └── values.yaml
     │       ├── templates
     │       │   ├── _helpers.tpl

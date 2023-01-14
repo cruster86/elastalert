@@ -16,8 +16,8 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: {{ (tpl (.Files.Glob (.Values.configPath | quote)).AsConfig . ) | sha256sum }}
-        checksum/rules: {{ ( tpl (.Files.Glob (.Values.rulesPath | quote)).AsConfig . ) | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/config.yaml") . | sha256sum }}
+        checksum/rules: {{ include (print $.Template.BasePath "/rules.yaml") . | sha256sum }}
       labels:
         name: {{ template "elastalert.fullname" . }}
         app: {{ template "elastalert.name" . }}

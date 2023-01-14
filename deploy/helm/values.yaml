@@ -1,7 +1,3 @@
-configPath: "conf/{{ .Values.global.CLUSTER_NAME }}/config.yaml"
-
-rulesPath: "conf/{{ .Values.global.CLUSTER_NAME }}/rules.yaml"
-
 # number of replicas to run
 replicaCount: 1
 
