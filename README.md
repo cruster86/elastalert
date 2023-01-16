@@ -6,14 +6,24 @@
     │       ├── Chart.yaml
     │       ├── conf
     │       │   ├── corp
+    │       │   │   ├── rules.yaml
+    │       │   │   ├── config.yaml
     │       │   │   └── values.yaml
     │       │   ├── cpm
+    │       │   │   ├── rules.yaml
+    │       │   │   ├── config.yaml
     │       │   │   └── values.yaml
     │       │   ├── cpm-dev
+    │       │   │   ├── rules.yaml
+    │       │   │   ├── config.yaml
     │       │   │   └── values.yaml
     │       │   ├── sirius
+    │       │   │   ├── rules.yaml
+    │       │   │   ├── config.yaml
     │       │   │   └── values.yaml
     │       │   └── univ
+    │       │       ├── rules.yaml
+    │       │       ├── config.yaml
     │       │       └── values.yaml
     │       ├── templates
     │       │   ├── _helpers.tpl
@@ -31,4 +41,11 @@
         └── helm_deploy_and_wait.sh
 </details>
 
-Original chart (deprecated project): https://github.com/jertel/elastalert-docker/tree/master/chart/elastalert
+Настройки:
+  - Настройка модулей: `templates/modules.yaml` ( общая для всех кластеров )
+  - Настройка конфига: `conf/${CLUSTER_NAME}/config.yaml`
+  - Настройка правил: `conf/${CLUSTER_NAME}/rules.yaml`
+
+---
+
+Original chart (deprecated): https://github.com/jertel/elastalert-docker/tree/master/chart/elastalert
