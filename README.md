@@ -45,6 +45,7 @@
   - Настройка модулей: `templates/modules.yaml` ( общая для всех кластеров )
   - Настройка конфига: `conf/${CLUSTER_NAME}/config.yaml`
   - Настройка правил: `conf/${CLUSTER_NAME}/rules.yaml`
+  - Настройка правил: `conf/${CLUSTER_NAME}/modules.yaml`
 
 ---
 
