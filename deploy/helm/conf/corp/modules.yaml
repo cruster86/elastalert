@@ -1,0 +1,63 @@
+modules:
+  rob.py: |-
+    import re
+    import json
+    import requests
+
+    from requests import RequestException
+    from elastalert.alerts import Alerter, DateTimeEncoder, BasicMatchString
+
+    from elastalert.util import EAException
+
+    ROB_RULE_URL_PARAM = "rob_url"
+    ROB_RULE_TOKEN_PARAM = "rob_token"
+    ROB_RULE_KIBANA_URL_PARAM = "kibana_url"
+
+
+    class RobAlerter(Alerter):
+        """ Requested elasticsearch indices are sent by HTTP POST to Herald. Encoded with JSON. """
+
+        required_options = set([ROB_RULE_URL_PARAM, ROB_RULE_TOKEN_PARAM, ROB_RULE_KIBANA_URL_PARAM])
+
+        def alert(self, matches):
+            """ Each match will trigger a POST to the specified endpoint(s). """
+            headers = {
+                "Content-Type": "application/json",
+                "Accept": "application/json;charset=utf-8",
+                'Authorization': 'Bearer ' + self.rule[ROB_RULE_TOKEN_PARAM],
+            }
+
+            subject = self.create_title(matches)
+
+            for match in matches:
+                payload = {
+                  'type': 'error',
+                  'summary': subject,
+                  'tm': match['@timestamp'],
+                  'message': match['json']['message'],
+                  'link': self.rule[ROB_RULE_KIBANA_URL_PARAM] + "/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:"+match['_id']+"'%29%29%29&_a=%28columns:!%28_source%29,interval:auto,query:%28language:kuery,query:%27_id:%22" + match['_id'] + "%22%27%29%29"
+                   }
+
+                if 'json' in match and 'data' in match['json']:
+                    payload['data'] = match['json']['data']
+                if 'kubernetes' in match and 'labels' in match['kubernetes']:
+                    payload['labels'] = match['kubernetes']['labels']
+
+                try:
+                    response = requests.post(
+                        self.rule[ROB_RULE_URL_PARAM], data=json.dumps(payload, cls=DateTimeEncoder),
+                        headers=headers
+                    )
+                    response.raise_for_status()
+                except RequestException as e:
+                    raise EAException(
+                        "Error posting message to Rob: %s. Details: %s" % (e, "" if e.response is None else e.response.text)
+                    )
+
+        def get_info(self):
+            return {
+                'type': 'rob',
+                ROB_RULE_URL_PARAM: self.rule[ROB_RULE_URL_PARAM],
+                ROB_RULE_TOKEN_PARAM: self.rule[ROB_RULE_TOKEN_PARAM],
+                ROB_RULE_KIBANA_URL_PARAM: self.rule[ROB_RULE_KIBANA_URL_PARAM]
+            }

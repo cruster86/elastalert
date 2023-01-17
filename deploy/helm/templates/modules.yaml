@@ -8,3 +8,7 @@ data:
 kind: ConfigMap
 metadata:
   name: modules
+  labels:
+    app: {{ template "elastalert.name" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
