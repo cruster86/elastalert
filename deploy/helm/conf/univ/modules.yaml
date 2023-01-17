@@ -1,5 +1,4 @@
 modules:
-  __init__.py: ""
   rob.py: |-
     import re
     import json

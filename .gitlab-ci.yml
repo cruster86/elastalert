@@ -20,6 +20,7 @@ stages:
       -f deploy/helm/conf/${CLUSTER_NAME}/values.yaml
       -f deploy/helm/conf/${CLUSTER_NAME}/rules.yaml
       -f deploy/helm/conf/${CLUSTER_NAME}/config.yaml
+      -f deploy/helm/conf/${CLUSTER_NAME}/modules.yaml
       --set global.secret="${YC_REGISTRY}"
       --atomic
       --wait"
