@@ -52,7 +52,7 @@ cpm-dev elastalert deploy:
 
 #############  CORP  ############
 
-corp-prod elastalert deploy:
+corp elastalert deploy:
   extends:
     - .base-elastalert
   stage: corp-deploy
@@ -65,7 +65,7 @@ corp-prod elastalert deploy:
 
 #############  UNIV  ############
 
-univ-prod elastalert deploy:
+univ elastalert deploy:
   extends:
     - .base-elastalert
   stage: univ-deploy
@@ -78,7 +78,7 @@ univ-prod elastalert deploy:
 
 #############  SIRIUS  ############
 
-#sirius-prod elastalert deploy:
+#sirius elastalert deploy:
 #  extends:
 #    - .base-elastalert
 #  stage: sirius-deploy
