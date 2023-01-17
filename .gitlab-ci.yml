@@ -1,7 +1,7 @@
 stages:
   - cpm-deploy
-#  - corp-deploy
-#  - univ-deploy
+  - corp-deploy
+  - univ-deploy
 #  - sirius-deploy
 
 .base-elastalert:
@@ -51,29 +51,29 @@ cpm-dev elastalert deploy:
 
 #############  CORP  ############
 
-#corp-prod elastalert deploy:
-#  extends:
-#    - .base-elastalert
-#  stage: corp-deploy
-#  environment:
-#    name: prod
-#  variables:
-#    CLUSTER_NAME: "corp"
-#  tags:
-#    - kube-corp
+corp-prod elastalert deploy:
+  extends:
+    - .base-elastalert
+  stage: corp-deploy
+  environment:
+    name: prod
+  variables:
+    CLUSTER_NAME: "corp"
+  tags:
+    - kube-corp
 
 #############  UNIV  ############
 
-#univ-prod elastalert deploy:
-#  extends:
-#    - .base-elastalert
-#  stage: univ-deploy
-#  environment:
-#    name: prod
-#  variables:
-#    CLUSTER_NAME: "univ"
-#  tags:
-#    - kube-univ
+univ-prod elastalert deploy:
+  extends:
+    - .base-elastalert
+  stage: univ-deploy
+  environment:
+    name: prod
+  variables:
+    CLUSTER_NAME: "univ"
+  tags:
+    - kube-univ
 
 #############  SIRIUS  ############
 
