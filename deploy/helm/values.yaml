@@ -61,6 +61,8 @@ extraConfigOptions: {}
 
 rules: {}
 
+modules: {}
+
 config: {}
 
 serviceAccount:
