@@ -1,8 +1,9 @@
 stages:
-  - cpm-deploy
+  - cpm-dev-deploy
+  - cpm-yc-deploy
   - corp-deploy
   - univ-deploy
-#  - sirius-deploy
+  - sirius-deploy
 
 .base-elastalert:
   when: manual
@@ -26,12 +27,12 @@ stages:
       --wait"
       ./scripts/helm_deploy_and_wait.sh
 
-#############  CPM  ############
+#############  CPM-DEV  ############
 
 cpm-dev elastalert deploy:
   extends:
     - .base-elastalert
-  stage: cpm-deploy
+  stage: cpm-dev-deploy
   environment:
     name: stage
   variables:
@@ -39,16 +40,18 @@ cpm-dev elastalert deploy:
   tags:
     - kube-cpm
 
-#cpm-yc elastalert deploy:
-#  extends:
-#    - .base-elastalert
-#  stage: cpm-deploy
-#  environment:
-#    name: prod
-#  variables:
-#    CLUSTER_NAME: "cpm"
-#  tags:
-#    - cpm-yac
+#############  CPM-YC  ############
+
+cpm-yc elastalert deploy:
+  extends:
+    - .base-elastalert
+  stage: cpm-yc-deploy
+  environment:
+    name: prod
+  variables:
+    CLUSTER_NAME: "cpm"
+  tags:
+    - cpm-yac
 
 #############  CORP  ############
 
@@ -78,13 +81,13 @@ univ elastalert deploy:
 
 #############  SIRIUS  ############
 
-#sirius elastalert deploy:
-#  extends:
-#    - .base-elastalert
-#  stage: sirius-deploy
-#  environment:
-#    name: prod
-#  variables:
-#    CLUSTER_NAME: "sirius"
-#  tags:
-#    - kube-ci
+sirius elastalert deploy:
+  extends:
+    - .base-elastalert
+  stage: sirius-deploy
+  environment:
+    name: prod
+  variables:
+    CLUSTER_NAME: "sirius"
+  tags:
+    - kube-ci

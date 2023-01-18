@@ -1,27 +1,33 @@
 <details><summary>Состав проекта:</summary>
-    .
 
+    ├── .gitlab-ci.yml
+    ├── README.md     
     ├── deploy
     │   └── helm
     │       ├── Chart.yaml
     │       ├── conf
     │       │   ├── corp
+    │       │   │   ├── modules.yaml    
     │       │   │   ├── rules.yaml
     │       │   │   ├── config.yaml
     │       │   │   └── values.yaml
     │       │   ├── cpm
+    │       │   │   ├── modules.yaml
     │       │   │   ├── rules.yaml
     │       │   │   ├── config.yaml
     │       │   │   └── values.yaml
     │       │   ├── cpm-dev
+    │       │   │   ├── modules.yaml
     │       │   │   ├── rules.yaml
     │       │   │   ├── config.yaml
     │       │   │   └── values.yaml
     │       │   ├── sirius
+    │       │   │   ├── modules.yaml
     │       │   │   ├── rules.yaml
     │       │   │   ├── config.yaml
     │       │   │   └── values.yaml
     │       │   └── univ
+    │       │       ├── modules.yaml
     │       │       ├── rules.yaml
     │       │       ├── config.yaml
     │       │       └── values.yaml
@@ -41,12 +47,10 @@
         └── helm_deploy_and_wait.sh
 </details>
 
-Настройки:
-  - Настройка модулей: `templates/modules.yaml` ( общая для всех кластеров )
+<details><summary>Настройки:</summary>
+
+  - Настройка параметров: `conf/${CLUSTER_NAME}/values.yaml`
   - Настройка конфига: `conf/${CLUSTER_NAME}/config.yaml`
   - Настройка правил: `conf/${CLUSTER_NAME}/rules.yaml`
-  - Настройка правил: `conf/${CLUSTER_NAME}/modules.yaml`
-
----
-
-Original chart (deprecated): https://github.com/jertel/elastalert-docker/tree/master/chart/elastalert
+  - Настройка модулей: `conf/${CLUSTER_NAME}/modules.yaml`
+</details>
