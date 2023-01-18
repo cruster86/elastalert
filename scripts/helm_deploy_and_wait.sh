@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -euo pipefail
 set -x
 
@@ -86,4 +87,3 @@ done
 # We timed out
 echo "LOG: Release ${RELEASE_NAME} did not complete in time" 1>&2
 exit 1
-
