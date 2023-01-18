@@ -14,7 +14,7 @@ stages:
     - set -x
     - kubectl get ns elastalert || kubectl create ns elastalert
     - chmod +x ./scripts/helm_deploy_and_wait.sh
-    - RELEASE_NAME="elastalert"
+    - RELEASE_NAME="elastalert-v1"
       NAMESPACE="elastalert"
       CHART="deploy/helm"
       HELM_ARGS="
