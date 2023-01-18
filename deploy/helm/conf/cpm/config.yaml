@@ -7,7 +7,7 @@ config:
       minutes: 1
     buffer_time:
       minutes: 15
-    es_host: elasticsearch-master
+    es_host: 10.96.214.227
     es_port: 9200
     writeback_index: elastalert_status
     use_ssl: False
