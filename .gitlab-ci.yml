@@ -29,7 +29,7 @@ stages:
 
 #############  CPM-DEV  ############
 
-cpm-dev elastalert deploy:
+cpm-dev deploy:
   extends:
     - .base-elastalert
   stage: cpm-dev-deploy
@@ -42,7 +42,7 @@ cpm-dev elastalert deploy:
 
 #############  CPM-YC  ############
 
-cpm-yc elastalert deploy:
+cpm-yc deploy:
   extends:
     - .base-elastalert
   stage: cpm-yc-deploy
@@ -55,7 +55,7 @@ cpm-yc elastalert deploy:
 
 #############  CORP  ############
 
-corp elastalert deploy:
+corp deploy:
   extends:
     - .base-elastalert
   stage: corp-deploy
@@ -68,7 +68,7 @@ corp elastalert deploy:
 
 #############  UNIV  ############
 
-univ elastalert deploy:
+univ deploy:
   extends:
     - .base-elastalert
   stage: univ-deploy
@@ -81,7 +81,7 @@ univ elastalert deploy:
 
 #############  SIRIUS  ############
 
-sirius elastalert deploy:
+sirius deploy:
   extends:
     - .base-elastalert
   stage: sirius-deploy
