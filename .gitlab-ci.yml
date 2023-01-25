@@ -22,8 +22,8 @@ stages:
       -f deploy/helm/conf/${CLUSTER_NAME}/rules.yaml
       -f deploy/helm/conf/${CLUSTER_NAME}/config.yaml
       -f deploy/helm/conf/${CLUSTER_NAME}/modules.yaml
-      --set global.yc-secret="${YC_REGISTRY}"
-      --set global.gitlab-secret="${GITLAB_REGISTRY}"
+      --set global.yc_secret="${YC_REGISTRY}"
+      --set global.gitlab_secret="${GITLAB_REGISTRY}"
       --atomic
       --wait"
       ./scripts/helm_deploy_and_wait.sh
