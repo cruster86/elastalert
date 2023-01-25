@@ -22,13 +22,13 @@ realertIntervalMins: ""
 writebackIndex: elastalert
 
 image:
-  # docker image
-  repository: cr.yandex/crpcm9tg75s8gu2hqkp9/elastalert
-  # docker image tag
+  #repository: cr.yandex/crpcm9tg75s8gu2hqkp9/elastalert
+  repository: registry.sirius.online/infra/elastalert:latest
   tag: latest
   pullPolicy: Always
   pullSecrets:
   - sirius-registry
+  - gitlab-registry
 
 resources: {}
 
