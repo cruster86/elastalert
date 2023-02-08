@@ -8,4 +8,6 @@
 
 Конфигурация деплоя находится в: `.gitlab-ci.yaml`
 
+---
+
 Upstream проект: https://github.com/jertel/elastalert-docker

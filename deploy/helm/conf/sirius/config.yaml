@@ -12,6 +12,6 @@ config:
     es_port: 9200
     writeback_index: elastalert_status
     use_ssl: False
-    verify_certs: True
+    verify_certs: False
     alert_time_limit:
       minutes: 60

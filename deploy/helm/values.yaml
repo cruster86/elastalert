@@ -19,8 +19,10 @@ alertRetryLimitMins: 2880
 # Default time before realerting, in minutes
 realertIntervalMins: ""
 
+# Index name in elasticsearch
 writebackIndex: elastalert
 
+# Image params
 image:
   #repository: cr.yandex/crpcm9tg75s8gu2hqkp9/elastalert
   repository: registry.sirius.online/infra/elastalert
@@ -59,10 +61,13 @@ optEnv: []
 
 extraConfigOptions: {}
 
+# list of rules for parsing logs messages
 rules: {}
 
+# additional modules
 modules: {}
 
+# elasticsearch connection options
 config: {}
 
 serviceAccount:
@@ -77,6 +82,7 @@ serviceAccount:
 podSecurityPolicy:
   create: false
 
+# conditions to select on which node to run
 nodeSelector: {}
 
 affinity: {}
