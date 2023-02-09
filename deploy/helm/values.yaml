@@ -32,6 +32,7 @@ image:
   - sirius-registry
   - gitlab-registry
 
+# Container resource requests and limits
 resources: {}
 
 # Annotations to be added to pods
@@ -57,8 +58,10 @@ elasticsearch:
   # whether or not to verify TLS certificates
   verifyCerts: "True"
 
+# Additional pod environment variable definitions
 optEnv: []
 
+# Additional options to propagate to all rules, cannot be alert, type, name or index
 extraConfigOptions: {}
 
 # list of rules for parsing logs messages
@@ -79,16 +82,21 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name:
 
+# Create pod security policy resources
 podSecurityPolicy:
   create: false
 
 # conditions to select on which node to run
 nodeSelector: {}
 
+# Affinity specifications for the deployed pod(s)
 affinity: {}
 
+# Tolerations for deployment
 tolerations: []
 
+# Additional volume definitions
 extraVolumes: []
 
+# Additional volumeMount definitions
 extraVolumeMounts: []
