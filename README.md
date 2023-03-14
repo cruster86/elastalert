@@ -1,12 +1,12 @@
 ### Структура репозитория
 
-Настройки для кластеров находятся в:
+Настройки для кластеров:
 
   - `deplo/helm/conf/${CLUSTER_NAME}/values.yaml`
   - `deplo/helm/conf/${CLUSTER_NAME}/rules.yaml`
   - `deplo/helm/conf/${CLUSTER_NAME}/config.yaml`
 
-Конфигурация деплоя находится в: `.gitlab-ci.yaml`
+Конфигурация деплоя: `.gitlab-ci.yaml`
 
 ---
 
