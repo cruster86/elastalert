@@ -26,7 +26,7 @@ writebackIndex: elastalert
 image:
   #repository: cr.yandex/crpcm9tg75s8gu2hqkp9/elastalert
   repository: registry.sirius.online/infra/elastalert
-  tag: v0.2.4
+  tag: v0.2.5
   pullPolicy: Always
   pullSecrets:
   - sirius-registry
