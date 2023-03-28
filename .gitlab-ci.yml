@@ -1,9 +1,8 @@
 stages:
-  - cpm-dev-deploy
-  - cpm-yc-deploy
-  - corp-deploy
-  - univ-deploy
-  - sirius-deploy
+  - cpm
+  - corp
+  - univ
+  - sirius
 
 .base-elastalert:
   when: manual
@@ -11,7 +10,6 @@ stages:
     - echo 'Deploy parameters:'
     - echo 'CLUSTER_NAME =>' ${CLUSTER_NAME}
   script:
-    - set -x
     - kubectl get ns elastalert || kubectl create ns elastalert
     - chmod +x ./scripts/helm_deploy_and_wait.sh
     - RELEASE_NAME="elastalert-v1"
@@ -30,10 +28,10 @@ stages:
 
 #############  CPM-DEV  ############
 
-cpm-dev deploy:
+cpm elastalert stage:
   extends:
     - .base-elastalert
-  stage: cpm-dev-deploy
+  stage: cpm
   environment:
     name: stage
   variables:
@@ -43,10 +41,10 @@ cpm-dev deploy:
 
 #############  CPM-YC  ############
 
-cpm-yc deploy:
+cpm elastalert prod:
   extends:
     - .base-elastalert
-  stage: cpm-yc-deploy
+  stage: cpm
   environment:
     name: prod
   variables:
@@ -56,10 +54,10 @@ cpm-yc deploy:
 
 #############  CORP  ############
 
-corp deploy:
+corp elastalert prod:
   extends:
     - .base-elastalert
-  stage: corp-deploy
+  stage: corp
   environment:
     name: prod
   variables:
@@ -69,10 +67,10 @@ corp deploy:
 
 #############  UNIV  ############
 
-univ deploy:
+univ elastalert prod:
   extends:
     - .base-elastalert
-  stage: univ-deploy
+  stage: univ
   environment:
     name: prod
   variables:
@@ -82,10 +80,10 @@ univ deploy:
 
 #############  SIRIUS  ############
 
-sirius deploy:
+sirius elastalert prod:
   extends:
     - .base-elastalert
-  stage: sirius-deploy
+  stage: sirius
   environment:
     name: prod
   variables:
