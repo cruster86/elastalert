@@ -156,7 +156,7 @@ rules:
     filter:
     - query:
         query_string:
-          query: "kubernetes.container.name : (calendar OR telegram OR tracker) AND (json.severity:(ERROR OR CRITICAL) OR json.level_name:(ERROR OR CRITICAL)) AND kubernetes.namespace: rob-dev"
+          query: "kubernetes.container.name : (calendar OR telegram OR tracker OR passport OR staff OR process-tms) AND (json.severity:(ERROR OR CRITICAL OR error OR critical) OR json.level:(ERROR OR CRITICAL OR error OR critical)) AND kubernetes.namespace: rob-dev"
     alert:
     - "rob"
     include: ["json.message", "json.data", "kubernetes.labels.app", "_id", "_index"]
@@ -176,7 +176,7 @@ rules:
     alert_text_args: ["breakline", "json.message", "_id", "json.data"]
     alert_text_type: alert_text_only
     alert: "elastalert_modules.rob.RobAlerter"
-    rob_url: "https://rob.sirius.online/message/logs_dev_alert"
+    rob_url: "https://rob.sirius.online/message/rob_dev_alert"
     rob_token: "eyJhbGciOiJQUzUxMiJ9.eyJlbWFpbCI6ImdpdGxhYkBzaXJpdXMub25saW5lIiwicm9sZXMiOltdLCJtaWRkbGVOYW1lIjoiIiwibGFzdE5hbWUiOiIiLCJmaXJzdE5hbWUiOiIiLCJpZCI6IjAiLCJwYXJlbnRDb2RlIjpudWxsfQ.4wElX1AAbYchLsUUN8DFNJb3THG7XsURqzYpv98hvrGVZaIxQpmjrS8bIVfcgkewRlRyhBoxamxAqsbNMpBj359FgLdHiOCpst-HPM-hSClNyIEdeJYUDQXkKBL4IIkvwZ4etXwzGhubFtD44unZxgEqzcCDc3ShCts7l0OAxa3LvTue_f_JhxpUYSDQn84jnswEUKvcWGpZ5PcleptbvIM7_yG8h9RxulvXxgckDO5wWqRECcJIqfWMR57xI0aeTgZa1Fh2s7Ljtd7jgtg8nINB4X1FCm11w5MfKcKm-SJEnEcvy8VXDd3srw7iD30KYcQVa2VnVbGUKREcU9IEmg"
     kibana_url: "https://logs.sirius.online"
   rob-prod.yaml: |-
@@ -187,7 +187,7 @@ rules:
     filter:
     - query:
         query_string:
-          query: "kubernetes.container.name : (calendar OR telegram OR tracker OR web) AND (json.severity:(ERROR OR CRITICAL) OR json.level_name:(ERROR OR CRITICAL)) AND kubernetes.namespace: rob-prod"
+          query: "kubernetes.container.name : (calendar OR telegram OR tracker OR web OR passport OR staff OR process-tms) AND (json.severity:(ERROR OR CRITICAL OR error OR critical) OR json.level:(ERROR OR CRITICAL OR error OR critical)) AND kubernetes.namespace: rob-prod"
     alert:
     - "rob"
     include: ["json.message", "json.data", "kubernetes.labels.app", "_id", "_index"]
@@ -207,6 +207,6 @@ rules:
     alert_text_args: ["breakline", "json.message", "_id", "json.data"]
     alert_text_type: alert_text_only
     alert: "elastalert_modules.rob.RobAlerter"
-    rob_url: "https://rob.sirius.online/message/logs_prod_alert"
+    rob_url: "https://rob.sirius.online/message/rob_prod_alert"
     rob_token: "eyJhbGciOiJQUzUxMiJ9.eyJlbWFpbCI6ImdpdGxhYkBzaXJpdXMub25saW5lIiwicm9sZXMiOltdLCJtaWRkbGVOYW1lIjoiIiwibGFzdE5hbWUiOiIiLCJmaXJzdE5hbWUiOiIiLCJpZCI6IjAiLCJwYXJlbnRDb2RlIjpudWxsfQ.4wElX1AAbYchLsUUN8DFNJb3THG7XsURqzYpv98hvrGVZaIxQpmjrS8bIVfcgkewRlRyhBoxamxAqsbNMpBj359FgLdHiOCpst-HPM-hSClNyIEdeJYUDQXkKBL4IIkvwZ4etXwzGhubFtD44unZxgEqzcCDc3ShCts7l0OAxa3LvTue_f_JhxpUYSDQn84jnswEUKvcWGpZ5PcleptbvIM7_yG8h9RxulvXxgckDO5wWqRECcJIqfWMR57xI0aeTgZa1Fh2s7Ljtd7jgtg8nINB4X1FCm11w5MfKcKm-SJEnEcvy8VXDd3srw7iD30KYcQVa2VnVbGUKREcU9IEmg"
     kibana_url: "https://logs.sirius.online"
