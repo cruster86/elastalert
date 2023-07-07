@@ -14,14 +14,14 @@ stages:
     - chmod +x ./scripts/helm_deploy_and_wait.sh
     - RELEASE_NAME="elastalert-v1"
       NAMESPACE="elastalert"
-      CHART="deploy/helm"
+      CHART="chart"
       HELM_ARGS="
-      -f deploy/helm/conf/${CLUSTER_NAME}/values.yaml
-      -f deploy/helm/conf/${CLUSTER_NAME}/rules.yaml
-      -f deploy/helm/conf/${CLUSTER_NAME}/config.yaml
-      -f deploy/helm/conf/${CLUSTER_NAME}/modules.yaml
+      -f chart/conf/${CLUSTER_NAME}/values.yaml
+      -f chart/conf/${CLUSTER_NAME}/rules.yaml
+      -f chart/conf/${CLUSTER_NAME}/config.yaml
+      -f chart/conf/${CLUSTER_NAME}/modules.yaml
       --set global.yc_secret="${YC_REGISTRY}"
-      --set global.gitlab_secret="${GITLAB_REGISTRY}"
+      --set global.gitlab_secret="${INFRA_REGISTRY}"
       --atomic
       --wait"
       ./scripts/helm_deploy_and_wait.sh
