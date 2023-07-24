@@ -156,7 +156,7 @@ rules:
     filter:
     - query:
         query_string:
-          query: "kubernetes.container.name : (calendar OR telegram OR tracker OR passport OR staff OR process-tms) AND (json.severity:(ERROR OR CRITICAL OR error OR critical) OR json.level:(ERROR OR CRITICAL OR error OR critical)) AND kubernetes.namespace: rob-dev"
+          query: "kubernetes.container.name: /rob-.*/ AND (json.severity:(ERROR OR CRITICAL OR error OR critical) OR json.level:(ERROR OR CRITICAL OR error OR critical)) AND kubernetes.namespace: rob-dev"
     alert:
     - "rob"
     include: ["json.message", "json.data", "kubernetes.labels.app", "_id", "_index"]
