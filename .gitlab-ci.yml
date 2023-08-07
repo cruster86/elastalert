@@ -41,16 +41,16 @@ cpm elastalert stage:
 
 #############  CPM-YC  ############
 
-cpm elastalert prod:
-  extends:
-    - .base-elastalert
-  stage: cpm
-  environment:
-    name: prod
-  variables:
-    CLUSTER_NAME: "cpm"
-  tags:
-    - cpm-yac
+#cpm elastalert prod:
+#  extends:
+#    - .base-elastalert
+#  stage: cpm
+#  environment:
+#    name: prod
+#  variables:
+#    CLUSTER_NAME: "cpm"
+#  tags:
+#    - cpm-yac
 
 #############  CORP  ############
 
