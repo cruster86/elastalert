@@ -100,3 +100,7 @@ extraVolumes: []
 
 # Additional volumeMount definitions
 extraVolumeMounts: []
+
+# Включаем ли мы секреты
+secrets:
+  enabled: true
