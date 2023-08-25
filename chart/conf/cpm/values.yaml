@@ -3,3 +3,6 @@ tolerations:
   key: node-role
   operator: Equal
   value: monitoring
+
+secrets:
+  enabled: false

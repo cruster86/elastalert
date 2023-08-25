@@ -1,5 +1,4 @@
 stages:
-  - cpm
   - corp
   - univ
   - sirius
@@ -10,10 +9,10 @@ stages:
     - echo 'Deploy parameters:'
     - echo 'CLUSTER_NAME =>' ${CLUSTER_NAME}
   script:
-    - kubectl get ns elastalert || kubectl create ns elastalert
+    - kubectl get ns logging || kubectl create ns logging
     - chmod +x ./scripts/helm_deploy_and_wait.sh
     - RELEASE_NAME="elastalert-v1"
-      NAMESPACE="elastalert"
+      NAMESPACE="logging"
       CHART="chart"
       HELM_ARGS="
       -f chart/conf/${CLUSTER_NAME}/values.yaml
@@ -22,35 +21,21 @@ stages:
       -f chart/conf/${CLUSTER_NAME}/modules.yaml
       --set global.yc_secret="${YC_REGISTRY}"
       --set global.gitlab_secret="${INFRA_REGISTRY}"
-      --atomic
-      --wait"
+      --debug --dry-run"
       ./scripts/helm_deploy_and_wait.sh
 
 #############  CPM-DEV  ############
 
-cpm elastalert stage:
-  extends:
-    - .base-elastalert
-  stage: cpm
-  environment:
-    name: stage
-  variables:
-    CLUSTER_NAME: "cpm-dev"
-  tags:
-    - kube-cpm
-
-#############  CPM-YC  ############
-
-#cpm elastalert prod:
-#  extends:
-#    - .base-elastalert
-#  stage: cpm
-#  environment:
-#    name: prod
-#  variables:
-#    CLUSTER_NAME: "cpm"
-#  tags:
-#    - cpm-yac
+# cpm elastalert stage:
+#   extends:
+#     - .base-elastalert
+#   stage: cpm
+#   environment:
+#     name: stage
+#   variables:
+#     CLUSTER_NAME: "cpm-dev"
+#   tags:
+#     - kube-cpm
 
 #############  CORP  ############
 
