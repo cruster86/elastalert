@@ -24,19 +24,6 @@ stages:
       --debug"
       ./scripts/helm_deploy_and_wait.sh
 
-#############  CPM-DEV  ############
-
-# cpm elastalert stage:
-#   extends:
-#     - .base-elastalert
-#   stage: cpm
-#   environment:
-#     name: stage
-#   variables:
-#     CLUSTER_NAME: "cpm-dev"
-#   tags:
-#     - kube-cpm
-
 #############  CORP  ############
 
 corp elastalert prod:
