@@ -35,3 +35,16 @@ sirius elastalert prod:
     CLUSTER_NAME: "sirius"
   tags:
     - kube-ci
+
+#############  UNIV  ############
+
+univ elastalert prod:
+  extends:
+    - .base-elastalert
+  stage: univ
+  environment:
+    name: prod
+  variables:
+    CLUSTER_NAME: "univ"
+  tags:
+    - kube-univ
