@@ -1,5 +1,0 @@
-nodeSelector:
-  kubernetes.io/hostname: ts-monitoring
-
-secrets:
-  enabled: false

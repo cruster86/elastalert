@@ -1,7 +1,6 @@
 stages:
-  - corp
-  - univ
   - sirius
+  - univ
 
 .base-elastalert:
   when: manual
@@ -23,32 +22,6 @@ stages:
       --set global.gitlab_secret="${INFRA_REGISTRY}"
       --debug"
       ./scripts/helm_deploy_and_wait.sh
-
-#############  CORP  ############
-
-corp elastalert prod:
-  extends:
-    - .base-elastalert
-  stage: corp
-  environment:
-    name: prod
-  variables:
-    CLUSTER_NAME: "corp"
-  tags:
-    - kube-corp
-
-#############  UNIV  ############
-
-univ elastalert prod:
-  extends:
-    - .base-elastalert
-  stage: univ
-  environment:
-    name: prod
-  variables:
-    CLUSTER_NAME: "univ"
-  tags:
-    - kube-univ
 
 #############  SIRIUS  ############
 
