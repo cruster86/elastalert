@@ -18,8 +18,7 @@ stages:
       -f chart/conf/${CLUSTER_NAME}/modules.yaml
       --set global.yc_secret="${YC_REGISTRY}"
       --set global.gitlab_secret="${INFRA_REGISTRY}"
-      --debug
-      --dry-run"
+      --debug"
       ./scripts/helm_deploy_and_wait.sh
 
 #############  SIRIUS  ############
