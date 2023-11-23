@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-rules
+  name: rules
   labels:
     app: {{ template "elastalert.name" . }}
     release: {{ .Release.Name }}
