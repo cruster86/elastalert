@@ -1,6 +1,5 @@
 stages:
   - sirius
-  - univ
 
 .base-elastalert:
   when: manual
@@ -8,7 +7,6 @@ stages:
     - echo 'Deploy parameters:'
     - echo 'CLUSTER_NAME =>' ${CLUSTER_NAME}
   script:
-    - kubectl get ns logging || kubectl create ns logging
     - chmod +x ./scripts/helm_deploy_and_wait.sh
     - RELEASE_NAME="elastalert-v1"
       NAMESPACE="logging"
@@ -20,7 +18,8 @@ stages:
       -f chart/conf/${CLUSTER_NAME}/modules.yaml
       --set global.yc_secret="${YC_REGISTRY}"
       --set global.gitlab_secret="${INFRA_REGISTRY}"
-      --debug"
+      --debug
+      --dry-run"
       ./scripts/helm_deploy_and_wait.sh
 
 #############  SIRIUS  ############
@@ -35,16 +34,3 @@ sirius elastalert prod:
     CLUSTER_NAME: "sirius"
   tags:
     - kube-ci
-
-#############  UNIV  ############
-
-univ elastalert prod:
-  extends:
-    - .base-elastalert
-  stage: univ
-  environment:
-    name: prod
-  variables:
-    CLUSTER_NAME: "univ"
-  tags:
-    - kube-univ
