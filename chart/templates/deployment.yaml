@@ -29,11 +29,11 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         volumeMounts:
         - mountPath: /opt/config
-          name: config
+          name: {{ .Release.Name }}-config
         - mountPath: /opt/rules
-          name: rules
+          name: {{ .Release.Name }}-rules
         - mountPath: /usr/local/lib/python3.6/site-packages/elastalert_modules
-          name: modules
+          name: {{ .Release.Name }}-modules
         resources:
 {{ toYaml .Values.resources | indent 12 }}
       restartPolicy: Always
@@ -59,15 +59,15 @@ spec:
       - configMap:
           defaultMode: 420
           name: modules
-        name: modules
+        name: {{ .Release.Name }}-modules
       - configMap:
           defaultMode: 420
           name: rules
-        name: rules
+        name: {{ .Release.Name }}-rules
       - configMap:
           defaultMode: 420
           items:
           - key: elastalert_config
             path: elastalert_config.yaml
           name: config
-        name: config
+        name: {{ .Release.Name }}-config
