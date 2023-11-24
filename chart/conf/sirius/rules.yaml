@@ -65,7 +65,7 @@ rules:
     filter:
     - query:
         query_string:
-          query: "kubernetes.container.name: /rob-.*/ AND (json.severity:(ERROR OR CRITICAL OR error OR critical) OR json.level:(ERROR OR CRITICAL OR error OR critical)) AND kubernetes.namespace_name: rob-dev"
+          query: "kubernetes.namespace_name: rob-dev AND (json.severity:(ERROR OR CRITICAL OR error OR critical) OR json.level:(ERROR OR CRITICAL OR error OR critical))"
     alert:
     - "rob-fluent-bit"
     include: ["message", "data", "kubernetes.labels.app", "_id", "_index"]
