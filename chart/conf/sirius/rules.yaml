@@ -53,7 +53,7 @@ rules:
         {3}
         ```
 
-        **[Подробности здесь](https://logs.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
+        **[Подробности здесь](https://logs.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:fluent-bit-prod,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:fluent-bit-prod,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
     alert_text_args: ["breakline", "message", "_id", "data"]
     alert_text_type: alert_text_only
     alert: "elastalert_modules.rob-fluent-bit.RobAlerter"
@@ -84,7 +84,7 @@ rules:
         {3}
         ```
 
-        **[Подробности здесь](https://logs.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
+        **[Подробности здесь](https://logs.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:fluent-bit-prod,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:fluent-bit-prod,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
     alert_text_args: ["breakline", "message", "_id", "data"]
     alert_text_type: alert_text_only
     alert: "elastalert_modules.rob-fluent-bit.RobAlerter"
@@ -114,7 +114,7 @@ rules:
         {3}
         ```
 
-        **[Подробности здесь](https://logs.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
+        **[Подробности здесь](https://logs.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:fluent-bit-dev,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:fluent-bit-dev,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
     alert_text_args: ["breakline", "message", "_id", "data"]
     alert_text_type: alert_text_only
     alert: "elastalert_modules.rob-fluent-bit.RobAlerter"
@@ -143,7 +143,7 @@ rules:
 
         {3}
         ```
-        **[Подробности здесь](https://logs.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
+        **[Подробности здесь](https://logs.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:fluent-bit-test,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:fluent-bit-test,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
     alert_text_args: ["breakline", "message", "_id", "data"]
     alert_text_type: alert_text_only
     alert: "elastalert_modules.rob-fluent-bit.RobAlerter"
@@ -173,7 +173,7 @@ rules:
         {3}
         ```
 
-        **[Подробности здесь](https://logs.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:efb38140-f415-11e9-8e35-01a5921e61bf,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
+        **[Подробности здесь](https://logs.sirius.online/app/kibana#/discover?_g=%28refreshInterval:%28pause:!t,value:0%29,time:%28from:now-1d,to:now%29%29&=%28columns:!%28_source%29,index:fluent-bit-dev,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:'_id:{2}'%29%29%29&_a=%28columns:!%28_source%29,index:fluent-bit-dev,interval:auto,query:%28language:kuery,query:%27_id:%22{2}%22%27%29,sort:!%28!%28'@timestamp',desc%29%29%29)**
     alert_text_args: ["breakline", "message", "_id", "data"]
     alert_text_type: alert_text_only
     alert: "elastalert_modules.rob-fluent-bit.RobAlerter"
